@@ -5,7 +5,13 @@ import { getProjects, urlFor } from '@/sanity/client';
 
 export default async function ProjectsPreview() {
   // Lekérjük a projekteket a Sanity CMS-ből
-  const projects = await getProjects();
+  const allProjects = await getProjects();
+
+  // Rendezzük az 'order' mező szerint növekvőbe, és kivesszük az első 3-at (Top 3)
+  // eslint-disable-path-next-line @typescript-eslint/no-explicit-any
+  const projects = (allProjects || [])
+    .sort((a: any, b: any) => (a.order ?? 99) - (b.order ?? 99))
+    .slice(0, 3);
 
   return (
     <section className="py-28 px-6 md:px-12 bg-[#FAF8F5] dark:bg-[#0A0F1D] transition-colors duration-500 border-t border-[#222222]/5 dark:border-white/10">
@@ -22,7 +28,7 @@ export default async function ProjectsPreview() {
           </p>
         </div>
 
-        {/* 3 Nagy Blokkos Elrendezés (Dinamikusan a Sanity-ből) */}
+        {/* 3 Nagy Blokkos Elrendezés (Dinamikusan a Sanity-ből, Top 3) */}
         <div className="space-y-16">
           {projects && projects.length > 0 ? (
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -73,7 +79,7 @@ export default async function ProjectsPreview() {
                   </div>
 
                   {/* Kép konténer hover zoom effekttel */}
-                  <div className="relative w-full h-[280px] md:h-[360px] overflow-hidden bg-gray-100 dark:bg-gray-900">
+                  <div className="relative w-full h-70 md:h-90 overflow-hidden bg-gray-100 dark:bg-gray-900">
                     {project.image && (
                       <Image
                         src={urlFor(project.image).url()}

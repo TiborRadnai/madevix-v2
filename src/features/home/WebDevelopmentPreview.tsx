@@ -26,13 +26,13 @@ export default function WebDevelopmentPreview() {
     <section className="py-28 px-6 md:px-12 bg-[#FAF8F5] dark:bg-[#0A0F1D] transition-colors duration-500 border-t border-[#222222]/5 dark:border-white/10">
       <div className="max-w-6xl mx-auto">
         
-      {/* Szekció fejléc: Projekte statt Versprechen */}
+        {/* Szekció fejléc: Webentwicklung */}
         <div className="mb-20 max-w-2xl">
           <h2 className="text-xs font-mono uppercase tracking-[0.25em] text-[#0F62FE] mb-4">
-            Ausgewählte Projekte
+            Webentwicklung & Prozess
           </h2>
           <p className="text-3xl md:text-5xl font-bold tracking-tight text-[#111111] dark:text-white leading-[1.15]">
-            Projekte statt Versprechen. <br />
+            Strukturierte Vorgehensweise. <br />
             <span className="text-[#222222]/60 dark:text-white/60 font-normal">Echte Ergebnisse statt Marketing.</span>
           </p>
         </div>
