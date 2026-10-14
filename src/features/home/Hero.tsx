@@ -1,9 +1,17 @@
-'use client';
-
 import Link from 'next/link';
 import { ArrowRight, ExternalLink } from 'lucide-react';
+import { getProjects } from '@/sanity/client';
 
-export default function Hero() {
+export default async function Hero() {
+  // Lekérjük a projekteket a Sanity CMS-ből
+  const allProjects = await getProjects();
+
+  // Rendezzük az 'order' szerint, és kivesszük a Top 2 projektet a Hero jobb oldalára
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const topProjects = (allProjects || [])
+    .sort((a: any, b: any) => (a.order ?? 99) - (b.order ?? 99))
+    .slice(0, 2);
+
   return (
     <section className="relative min-h-screen flex flex-col justify-center pt-36 pb-20 px-6 md:px-12 overflow-hidden bg-[#FAF8F5] dark:bg-[#0A0F1D] transition-colors duration-500">
       
@@ -49,44 +57,51 @@ export default function Hero() {
 
         </div>
 
-        {/* Jobb oldal: Vizuális fókuszpont / Saját munkák prémium preview (5 oszlop) */}
+        {/* Jobb oldal: Dinamikus Top 2 Projekt Preview a Sanity-ből (5 oszlop) */}
         <div className="lg:col-span-5 w-full flex flex-col gap-4">
           
           <div className="text-xs font-mono uppercase tracking-widest text-[#222222]/50 dark:text-white/40 mb-1">
             Ausgewählte Referenzen / Preview
           </div>
 
-          {/* 82.SEOUL Preview Kártya */}
-          <div className="group relative rounded-2xl bg-white dark:bg-[#111827] border border-[#222222]/10 dark:border-white/10 p-6 shadow-xl shadow-black/3 transition-all duration-300 hover:-translate-y-0.75 hover:shadow-2xl hover:border-[#0F62FE]/40 overflow-hidden">
-            
-            {/* Nagyon halvány, háttérbe ágyazott thumbnail ízelítő (10-15% opacity) */}
-            <div className="absolute right-0 top-0 bottom-0 w-1/2 bg-linear-to-l from-[#0F62FE]/10 dark:from-[#0F62FE]/15 to-transparent opacity-10 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none" />
+{topProjects && topProjects.length > 0 ? (
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            topProjects.map((project: any, index: number) => {
+              // Megállapítjuk a külső linket a domain alapján (ha van http, ha nincs, kiegészítjük)
+              const rawDomain = project.domain || '';
+              const externalUrl = rawDomain.startsWith('http') ? rawDomain : `https://${rawDomain}`;
 
-            <div className="relative z-10 flex items-center justify-between mb-4">
-              <span className="text-xs font-mono tracking-widest text-[#0F62FE]">82.SEOUL PORTAL</span>
-              <ExternalLink size={16} className="text-[#222222]/40 dark:text-white/40 group-hover:text-[#0F62FE] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
+              return (
+                <a
+                  key={project._id || index}
+                  href={externalUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative rounded-2xl bg-white dark:bg-[#111827] border border-[#222222]/10 dark:border-white/10 p-6 shadow-xl shadow-black/3 transition-all duration-300 hover:-translate-y-0.75 hover:shadow-2xl hover:border-[#0F62FE]/40 overflow-hidden block"
+                >
+                  {/* Háttér fényeffekt */}
+                  <div className="absolute right-0 top-0 bottom-0 w-1/2 bg-linear-to-l from-[#0F62FE]/10 dark:from-[#0F62FE]/15 to-transparent opacity-10 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none" />
+
+                  <div className="relative z-10 flex items-center justify-between mb-4">
+                    <span className="text-xs font-mono tracking-widest text-[#0F62FE] uppercase">
+                      {project.category}
+                    </span>
+                    <ExternalLink size={16} className="text-[#222222]/40 dark:text-white/40 group-hover:text-[#0F62FE] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
+                  </div>
+                  <h3 className="relative z-10 text-lg font-semibold text-[#111111] dark:text-white mb-1">
+                    {project.title}
+                  </h3>
+                  <p className="relative z-10 text-xs text-[#222222]/60 dark:text-white/60 line-clamp-2">
+                    {project.description}
+                  </p>
+                </a>
+              );
+            })
+          ) : (
+            <div className="rounded-2xl bg-white dark:bg-[#111827] border border-[#222222]/10 dark:border-white/10 p-6 text-xs text-[#222222]/50 dark:text-white/50 font-mono">
+              Keine Projekte hinterlegt.
             </div>
-            <h3 className="relative z-10 text-lg font-semibold text-[#111111] dark:text-white mb-1">K-Culture & Media</h3>
-            <p className="relative z-10 text-xs text-[#222222]/60 dark:text-white/60">
-              Immersive, visuell getriebene Plattform für internationale Communitys.
-            </p>
-          </div>
-
-          {/* Madeirise Preview Kártya */}
-          <div className="group relative rounded-2xl bg-white dark:bg-[#111827] border border-[#222222]/10 dark:border-white/10 p-6 shadow-xl shadow-black/3 transition-all duration-300 hover:-translate-y-0.75 hover:shadow-2xl hover:border-[#0F62FE]/40 overflow-hidden">
-            
-            {/* Nagyon halvány, háttérbe ágyazott thumbnail ízelítő (10-15% opacity) */}
-            <div className="absolute right-0 top-0 bottom-0 w-1/2 bg-linear-to-l from-[#0F62FE]/10 dark:from-[#0F62FE]/15 to-transparent opacity-10 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none" />
-
-            <div className="relative z-10 flex items-center justify-between mb-4">
-              <span className="text-xs font-mono tracking-widest text-[#0F62FE]">MADEIRISE STUDIO</span>
-              <ExternalLink size={16} className="text-[#222222]/40 dark:text-white/40 group-hover:text-[#0F62FE] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
-            </div>
-            <h3 className="relative z-10 text-lg font-semibold text-[#111111] dark:text-white mb-1">Mehrsprachige Reiseplattform</h3>
-            <p className="relative z-10 text-xs text-[#222222]/60 dark:text-white/60">
-              Umfangreiches Destinationsportal für internationale Besucher.
-            </p>
-          </div>
+          )}
 
         </div>
 
