@@ -1,9 +1,13 @@
 import { createClient } from 'next-sanity';
 import imageUrlBuilder from '@sanity/image-url';
 
+// Biztonságos fallback a projekt azonosítóra, hogy a Vercel build soha ne fusson 404/konfigurációs hibára
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'f4bp1j6v';
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production';
+
 export const client = createClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
+  projectId,
+  dataset,
   apiVersion: '2026-03-01',
   useCdn: true,
 });
@@ -25,7 +29,11 @@ export async function getProjects() {
       category,
       description,
       domain,
-      image
+      image,
+      featured,
+      challenge,
+      solution,
+      outcome
     }
   `);
 }

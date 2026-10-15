@@ -7,6 +7,7 @@ export const project = {
       name: 'title',
       title: 'Projekttitel',
       type: 'string',
+      // eslint-disable-path-next-line @typescript-eslint/no-explicit-any
       validation: (Rule: any) => Rule.required(),
     },
     {
@@ -17,6 +18,7 @@ export const project = {
         source: 'title',
         maxLength: 96,
       },
+      // eslint-disable-path-next-line @typescript-eslint/no-explicit-any
       validation: (Rule: any) => Rule.required(),
     },
     {
@@ -46,6 +48,30 @@ export const project = {
       name: 'order',
       title: 'Reihenfolge (Sortierung)',
       type: 'number',
+    },
+    {
+      name: 'featured',
+      title: 'Als Fokus-Projekt (Címlapsztori) markieren',
+      type: 'boolean',
+      description: 'Aktivieren, um dieses Projekt als Haupt-Fokus ganz oben im Magazin-Stil anzuzeigen.',
+    },
+    {
+      name: 'challenge',
+      title: 'Challenge / Ziel',
+      type: 'text',
+      description: 'Was war die Herausforderung oder das Ziel bei diesem Projekt?',
+    },
+    {
+      name: 'solution',
+      title: 'Solution / Lösung',
+      type: 'text',
+      description: 'Wie wurde es technisch oder konzeptionell gelöst?',
+    },
+    {
+      name: 'outcome',
+      title: 'Outcome / Ergebnis',
+      type: 'text',
+      description: 'Was war das messbare Ergebnis oder der langfristige Nutzen?',
     },
   ],
 };

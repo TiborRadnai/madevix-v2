@@ -1,16 +1,21 @@
 'use client';
 
 import Link from 'next/link';
+import { useState, useEffect } from 'react';
 
 export default function Footer() {
-  const currentYear = '2026';
+  const [currentYear, setCurrentYear] = useState('2026');
+
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear().toString());
+  }, []);
 
   return (
-    <footer className="bg-[#FAF8F5] dark:bg-[#0A0F1D] text-[#111111] dark:text-white pt-28 pb-16 px-6 md:px-12 border-t border-[#222222]/5 dark:border-white/10 transition-colors duration-500">
-      <div className="max-w-6xl mx-auto flex flex-col justify-between min-h-70">
+    <footer className="bg-[#FAF8F5] dark:bg-[#0A0F1D] text-[#111111] dark:text-white pt-24 pb-16 px-6 md:px-12 border-t border-[#222222]/5 dark:border-white/10 transition-colors duration-500">
+      <div className="max-w-6xl mx-auto flex flex-col gap-16">
         
-        {/* Felső rész: Kicsit nagyobb, hangsúlyosabb márkanév, Tagline, Email */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pb-20 border-b border-[#222222]/10 dark:border-white/10">
+        {/* 1. Felső rész: Márkanév, Tagline & Direkter Kontakt */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 pb-16 border-b border-[#222222]/10 dark:border-white/10">
           <div>
             <Link
               href="/"
@@ -36,25 +41,25 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Alsó rész: Gyorslinkek, Jogi elemek, Copyright */}
-        <div className="pt-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 text-xs text-[#222222]/60 dark:text-white/60">
+        {/* 2. Alsó rész: Tiszta, szellős elrendezés helyes térközökkel */}
+        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 text-xs text-[#222222]/60 dark:text-white/60">
           
           {/* Fő oldali linkek */}
-          <div className="flex flex-wrap items-center gap-8 uppercase tracking-[0.15em] font-medium text-[#111111] dark:text-white">
-            <Link href="/leistungen" className="hover:text-[#0F62FE] transition-colors">
+          <div className="flex flex-row flex-nowrap items-center gap-6 sm:gap-8 uppercase tracking-[0.15em] font-medium text-[#111111] dark:text-white text-[11px] sm:text-xs overflow-x-auto w-full lg:w-auto pb-1 lg:pb-0">
+            <Link href="/development" className="hover:text-[#0F62FE] transition-colors shrink-0">
               Web Development
             </Link>
-            <Link href="/referenciak" className="hover:text-[#0F62FE] transition-colors">
+            <Link href="/projects" className="hover:text-[#0F62FE] transition-colors shrink-0">
               Projects
             </Link>
-            <Link href="/kapcsolat" className="hover:text-[#0F62FE] transition-colors">
+            <Link href="/contact" className="hover:text-[#0F62FE] transition-colors shrink-0">
               Contact
             </Link>
           </div>
 
-          {/* Jogi linkek és Copyright */}
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8">
-            <div className="flex items-center gap-6">
+          {/* Jogi linkek és Dinamikus Copyright */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 lg:gap-8 w-full lg:w-auto justify-between">
+            <div className="flex flex-row flex-wrap items-center gap-6 text-[11px] sm:text-xs">
               <Link href="/impressum" className="hover:text-[#0F62FE] transition-colors">
                 Impressum
               </Link>
@@ -65,7 +70,8 @@ export default function Footer() {
                 Cookies
               </Link>
             </div>
-            <span className="font-mono text-[11px] text-[#222222]/40 dark:text-white/40">
+            
+            <span className="font-mono text-[10px] sm:text-[11px] text-[#222222]/40 dark:text-white/40">
               © {currentYear} Madevix. All rights reserved.
             </span>
           </div>
