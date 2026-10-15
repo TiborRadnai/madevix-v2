@@ -1,15 +1,15 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Sun, Moon } from 'lucide-react';
 
 export default function Navbar() {
   const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const lastScrollY = useRef(0);
   const pathname = usePathname();
 
   // Téma betöltése induláskor
@@ -37,31 +37,31 @@ export default function Navbar() {
     }
   };
 
-  // Scroll eseményfigyelő (felfelé/lefelé rejtés)
+  // Scroll eseményfigyelő useRef-fel (elkerüli a felesleges re-render loopokat)
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
       if (currentScrollY < 50) {
         setIsVisible(true);
-      } else if (currentScrollY > lastScrollY) {
+      } else if (currentScrollY > lastScrollY.current) {
         setIsVisible(false);
         setMobileMenuOpen(false);
       } else {
         setIsVisible(true);
       }
 
-      setLastScrollY(currentScrollY);
+      lastScrollY.current = currentScrollY;
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   const navLinks = [
-    { href: '/leistungen', label: 'Leistungen' },
-    { href: '/referenciak', label: 'Projekte' },
-    { href: '/kapcsolat', label: 'Kontakt' },
+    { href: '/development', label: 'Leistungen' },
+    { href: '/projects', label: 'Projekte' },
+    { href: '/contact', label: 'Kontakt' },
   ];
 
   return (
