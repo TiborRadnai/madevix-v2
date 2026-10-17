@@ -1,55 +1,28 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
-import Hero from "@/features/home/Hero";
-import ProjectsPreview from "@/features/home/ProjectsPreview";
-import WebDevelopmentPreview from "@/features/home/WebDevelopmentPreview";
-import WhyMadevix from "@/features/home/WhyMadevix";
-import FinalCTA from "@/features/home/FinalCTA";
-
+import Hero from '@/features/home/Hero';
+import ProjectsPreview from '@/features/home/ProjectsPreview';
+import WebDevelopmentPreview from '@/features/home/WebDevelopmentPreview';
+import WhyMadevix from '@/features/home/WhyMadevix';
+import FinalCTA from '@/features/home/FinalCTA';
 
 export const metadata: Metadata = {
-  title: 'Madevix | Individuelle Webentwicklung für Unternehmen',
-  description: 'Unabhängiges digitales Studio für maßgefertigte Websites. Ohne Baukästen, ohne Agentur-Umwege. Sauber entwickelt, schnell und direkt vom Entwickler in Deutschland.',
+  // A template miatt ez automatikusan "Madevix | Individuelle Webentwicklung für Unternehmen" lesz,
+  // vagy ha fix címet akarsz, használd a title-t:
+  title: 'Individuelle Webentwicklung für Unternehmen', 
+
+  description:
+    'Unabhängiges digitales Studio für moderne Unternehmen. Individuell entwickelte Websites, digitale Plattformen und klare Prozesse.',
+
   keywords: [
     'Webentwicklung Deutschland',
     'Individuelle Websites',
+    'Digitale Plattformen',
     'Webdesign Deutschland',
     'Digitale Lösungen',
     'Unternehmenswebsite',
-    'Freelance Webentwickler',
-    'Next.js Entwicklung',
-    'Madevix'
+    'Madevix',
   ],
-  authors: [{ name: 'Madevix' }],
-  creator: 'Madevix',
-  publisher: 'Madevix',
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  openGraph: {
-    title: 'Madevix | Individuelle Webentwicklung für Unternehmen',
-    description: 'Maßgefertigte Websites für Unternehmen, die online überzeugen wollen. Klar strukturiert und direkt vom Entwickler.',
-    url: 'https://madevix.com',
-    siteName: 'Madevix',
-    locale: 'de_DE',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Madevix | Individuelle Webentwicklung für Unternehmen',
-    description: 'Maßgefertigte Websites für Unternehmen. Klar strukturiert und direkt vom Entwickler.',
-  },
-  alternates: {
-    canonical: 'https://madevix.com',
-  },
 };
 
 export default function Home() {
@@ -58,11 +31,9 @@ export default function Home() {
       <Suspense fallback={<div className="min-h-screen flex items-center justify-center font-mono text-sm text-gray-400">Lade...</div>}>
         <Hero />
       </Suspense>
-
       <Suspense fallback={<div className="py-28 text-center text-sm font-mono text-gray-400">Lade Projekte...</div>}>
         <ProjectsPreview />
       </Suspense>
-
       <WebDevelopmentPreview />
       <WhyMadevix />
       <FinalCTA />

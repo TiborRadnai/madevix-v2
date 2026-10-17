@@ -154,7 +154,7 @@ export default async function ProjectsView() {
             Gefällt dir dieser Ansatz?
           </h2>
           <p className="text-base text-[#222222]/70 dark:text-white/70 mb-8 max-w-xl">
-            Lass uns über dein Projekt sprechen. Direkt, transparent und ohne Agentur-Umwege.
+            Lass uns über dein Projekt sprechen.
           </p>
           <Link
             href="/contact"

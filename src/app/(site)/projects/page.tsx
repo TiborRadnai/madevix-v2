@@ -3,7 +3,11 @@ import ProjectsView from '@/features/subpages/projects/ProjectsView';
 
 export const metadata = {
   title: 'Projekte & Referenzen | Madevix',
-  description: 'Projekte statt Versprechen. Echte Erfahrungen und saubere digitale Lösungen direkt vom Entwickler.',
+  description:
+    'Projekte statt Versprechen. Ausgewählte digitale Plattformen, moderne Websites und individuelle Lösungen aus realen Projekten.',
+  alternates: {
+    canonical: '/projects',
+  },
 };
 
 export default function Page() {

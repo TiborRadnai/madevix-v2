@@ -47,7 +47,7 @@ export default function DevelopmentView() {
 
             <div className="p-8 bg-white dark:bg-[#111827] border border-[#222222]/10 dark:border-white/10 flex flex-col justify-between">
               <div>
-                <span className="text-xs font-mono text-[#0F62FE] uppercase block mb-3">02 / Code</span>
+                <span className="text-xs font-mono text-[#0F62FE] uppercase block mb-3">02 / Entwicklung</span>
                 <h3 className="text-xl font-bold text-[#111111] dark:text-white mb-3">Saubere Entwicklung</h3>
                 <p className="text-sm text-[#222222]/70 dark:text-white/70 leading-relaxed">
                   Schnell, stabil und langfristig erweiterbar.
@@ -57,7 +57,7 @@ export default function DevelopmentView() {
 
             <div className="p-8 bg-white dark:bg-[#111827] border border-[#222222]/10 dark:border-white/10 flex flex-col justify-between">
               <div>
-                <span className="text-xs font-mono text-[#0F62FE] uppercase block mb-3">03 / Partner</span>
+                <span className="text-xs font-mono text-[#0F62FE] uppercase block mb-3">03 / Zusammenarbeit</span>
                 <h3 className="text-xl font-bold text-[#111111] dark:text-white mb-3">Direkter Kontakt.</h3>
                 <p className="text-sm text-[#222222]/70 dark:text-white/70 leading-relaxed">
                   Von der ersten Idee bis zum Launch.
@@ -137,7 +137,7 @@ export default function DevelopmentView() {
       <section className="px-6 md:px-12 text-center pt-12 flex flex-col items-center">
         <div className="max-w-4xl mx-auto w-full flex flex-col items-center">
           <h2 className="text-3xl md:text-5xl font-bold text-[#111111] dark:text-white mb-4 tracking-tight">
-            Bereit für dein Projekt?
+            Bereit für dein nächstes Projekt?
           </h2>
           <p className="text-base text-[#222222]/70 dark:text-white/70 mb-8 max-w-lg">
             Lass uns darüber sprechen.

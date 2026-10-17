@@ -33,7 +33,7 @@ export default function FinalCTA() {
         {/* CTA Gomb */}
         <div>
           <Link
-            href="/kapcsolat"
+            href="/contact"
             className="inline-flex items-center gap-3 rounded-full bg-[#0F62FE] px-8 py-4 text-sm font-medium text-white transition-all hover:bg-[#0F62FE]/90 shadow-xl shadow-[#0F62FE]/20 group"
           >
             Projekt anfragen

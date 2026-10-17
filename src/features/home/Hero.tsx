@@ -41,14 +41,14 @@ export default async function Hero() {
           {/* CTA Gombok */}
           <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
             <Link
-              href="/kapcsolat"
+              href="/contact"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-3 rounded-full bg-[#0F62FE] px-8 py-4 text-sm font-medium text-white transition-all hover:bg-[#0F62FE]/90 shadow-lg shadow-[#0F62FE]/15"
             >
               Projekt anfragen
               <ArrowRight size={16} />
             </Link>
             <Link
-              href="/referenciak"
+              href="/projects"
               className="w-full sm:w-auto inline-flex items-center justify-center rounded-full border border-[#111111]/15 dark:border-white/20 px-8 py-4 text-sm font-medium text-[#111111] dark:text-white transition-all hover:bg-[#111111]/5 dark:hover:bg-white/10 backdrop-blur-sm"
             >
               Projekte ansehen

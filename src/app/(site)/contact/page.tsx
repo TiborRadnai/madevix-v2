@@ -3,7 +3,11 @@ import ContactView from '@/features/subpages/contact/ContactView';
 
 export const metadata = {
   title: 'Kontakt | Madevix',
-  description: 'Lass uns über dein Projekt sprechen. Direkt, transparent und ohne Agentur-Umwege – direkt mit dem Entwickler.',
+  description:
+    'Bereit für dein nächstes Projekt? Sprich direkt mit dem Entwickler über deine Ideen, Ziele und Anforderungen.',
+  alternates: {
+    canonical: '/contact',
+  },
 };
 
 export default function Page() {

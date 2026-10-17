@@ -3,8 +3,13 @@ import DevelopmentView from '@/features/subpages/development/DevelopmentView';
 
 export const metadata = {
   title: 'Webentwicklung | Madevix',
-  description: 'Individuell entwickelt. Ohne Baukästen. Ohne unnötige Komplexität. Maßgeschneiderte Webanwendungen direkt vom Entwickler.',
+  description:
+    'Individuell entwickelte Websites und digitale Lösungen. Klar geplant, sauber entwickelt und langfristig wartbar.',
+  alternates: {
+    canonical: '/development',
+  },
 };
+
 
 export default function Page() {
   return (
